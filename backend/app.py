@@ -1,14 +1,22 @@
-# backend/app.py
-from flask import Flask, jsonify
+from flask import Flask, jsonify, send_from_directory
 from flask_cors import CORS
 import os
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static')
 CORS(app)
 
-@app.route("/hello")
+@app.route('/')
 def hello():
-    return jsonify(message="Ciao dal backend!")
+    return jsonify({'message': 'Ciao dal backend!'})
 
-if __name__ == "__main__":
-    app.run(debug=True)
+# Serve React static build
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def serve(path):
+    if path != "" and os.path.exists(os.path.join(app.static_folder, path)):
+        return send_from_directory(app.static_folder, path)
+    else:
+        return send_from_directory(app.static_folder, 'index.html')
+
+if __name__ == '__main__':
+    app.run()

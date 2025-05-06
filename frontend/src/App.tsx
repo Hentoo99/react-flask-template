@@ -9,7 +9,6 @@ function App() {
       .then(res => setMessage(res.data.message))
       .catch(err => console.error(err));
   }, []);
-  console.log(process.env.REACT_APP_API_URL)
   return (
     <div>
       <h1>Messaggio dal backend:</h1>
