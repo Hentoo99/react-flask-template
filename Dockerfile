@@ -31,4 +31,4 @@ ENV FLASK_RUN_PORT=5000
 EXPOSE 5000
 
 # Avvia Flask
-CMD ["flask", "run", "--app", "backend/app.py"]
+CMD ["flask", "run"]
