@@ -5,7 +5,7 @@ import os
 app = Flask(__name__, static_folder='static')
 CORS(app)
 
-@app.route('/')
+@app.route('/backend/')
 def hello():
     return jsonify({'message': 'Ciao dal backend!'})
 
