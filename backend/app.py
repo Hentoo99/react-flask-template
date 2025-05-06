@@ -2,12 +2,12 @@ from flask import Flask, jsonify, send_from_directory
 from flask_cors import CORS
 import os
 
-app = Flask(__name__, static_folder='backend/static')
+app = Flask(__name__, static_folder='static')
 CORS(app)
 
 @app.route('/backend/')
 def hello():
-    return jsonify({'message': 'Ciao dal backend!'})
+    return jsonify({'message': 'Ciao dal backendsss!'})
 
 # Serve React static build
 @app.route('/', defaults={'path': ''})
