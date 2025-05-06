@@ -14,9 +14,10 @@ def hello():
 @app.route('/<path:path>')
 def serve(path):
     if path != "" and os.path.exists(os.path.join(app.static_folder, path)):
-        return "TRUE"
+        return send_from_directory(app.static_folder, path)
     else:
-        return "False"
+        # Se la risorsa non esiste, restituiamo index.html (SPA)
+        return send_from_directory(app.static_folder, 'index.html')
 
 if __name__ == '__main__':
     app.run()
