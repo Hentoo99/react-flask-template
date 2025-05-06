@@ -23,7 +23,7 @@ COPY backend/ ./backend/
 COPY --from=frontend-build /app/frontend/build ./backend/static
 
 # Imposta variabili d'ambiente Flask
-ENV FLASK_APP=app.py
+ENV FLASK_APP=backend/app.py
 ENV FLASK_RUN_HOST=0.0.0.0
 ENV FLASK_RUN_PORT=5000
 
